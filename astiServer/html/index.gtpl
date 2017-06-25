@@ -26,19 +26,19 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>S -> I:</label>
-                  <input type="number" name="S2I" class="form-control" required placeholder="0.0" step="0.01" min="0" max="1"/><br />
+                  <input type="number" name="S2I" class="form-control" required placeholder="0.1" step="0.01" min="0" max="1"/><br />
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>I -> R:</label>
-                  <input type="number" name="I2R" class="form-control" required placeholder="0.0" step="0.01" min="0" max="1"/><br />
+                  <input type="number" name="I2R" class="form-control" required placeholder="0.1" step="0.01" min="0" max="1"/><br />
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>S -> R:</label>
-                  <input type="number" name="S2R" class="form-control" required placeholder="0.0" step="0.01" min="0" max="1"/><br />
+                  <input type="number" name="S2R" class="form-control" required placeholder="0.1" step="0.01" min="0" max="1"/><br />
                 </div>
               </div>
             </div>

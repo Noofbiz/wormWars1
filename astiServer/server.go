@@ -3,6 +3,9 @@ package astiServer
 import (
 	"html/template"
 	"net/http"
+	"strconv"
+
+	"github.com/Noofbiz/wormWars1/simulation"
 )
 
 var tmpl = template.Must(template.ParseGlob("astiServer/html/*"))
@@ -11,8 +14,6 @@ var tmpl = template.Must(template.ParseGlob("astiServer/html/*"))
 func StartServer() {
 	http.HandleFunc("/", mainHandler)
 	http.HandleFunc("/sim", simHandler)
-
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("astiServer/static"))))
 
 	go http.ListenAndServe(":4000", nil)
 }
@@ -28,14 +29,15 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 func simHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
-	d := make(map[string]string)
-	d["pop"] = r.Form.Get("pop")
-	d["initI"] = r.Form.Get("initI")
-	d["S2I"] = r.Form.Get("S2I")
-	d["I2R"] = r.Form.Get("I2R")
-	d["S2R"] = r.Form.Get("S2R")
+	pop, _ := strconv.Atoi(r.Form.Get("pop"))
+	initI, _ := strconv.Atoi(r.Form.Get("initI"))
+	s2i, _ := strconv.ParseFloat(r.Form.Get("S2I"), 64)
+	i2r, _ := strconv.ParseFloat(r.Form.Get("I2R"), 64)
+	s2r, _ := strconv.ParseFloat(r.Form.Get("S2R"), 64)
 
-	err := tmpl.ExecuteTemplate(w, "sim", d)
+	simulation.Simulate(pop, initI, s2i, i2r, s2r)
+
+	err := tmpl.ExecuteTemplate(w, "sim", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

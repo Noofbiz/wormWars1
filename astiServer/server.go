@@ -15,6 +15,8 @@ func StartServer() {
 	http.HandleFunc("/", mainHandler)
 	http.HandleFunc("/sim", simHandler)
 
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./astiServer/static/"))))
+
 	go http.ListenAndServe(":4000", nil)
 }
 

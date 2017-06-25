@@ -31,15 +31,35 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 func simHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
-	pop, _ := strconv.Atoi(r.Form.Get("pop"))
-	initI, _ := strconv.Atoi(r.Form.Get("initI"))
-	s2i, _ := strconv.ParseFloat(r.Form.Get("S2I"), 64)
-	i2r, _ := strconv.ParseFloat(r.Form.Get("I2R"), 64)
-	s2r, _ := strconv.ParseFloat(r.Form.Get("S2R"), 64)
+	pop, err := strconv.Atoi(r.Form.Get("pop"))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	initI, err := strconv.Atoi(r.Form.Get("initI"))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	s2i, err := strconv.ParseFloat(r.Form.Get("S2I"), 64)
+	if err != nil || s2i > 1.0 {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	i2r, err := strconv.ParseFloat(r.Form.Get("I2R"), 64)
+	if err != nil || i2r > 1.0 {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	s2r, err := strconv.ParseFloat(r.Form.Get("S2R"), 64)
+	if err != nil || s2r > 1.0 {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
-	simulation.Simulate(pop, initI, s2i, i2r, s2r)
+	d := simulation.Simulate(pop, initI, s2i, i2r, s2r)
 
-	err := tmpl.ExecuteTemplate(w, "sim", nil)
+	err = tmpl.ExecuteTemplate(w, "sim", d)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

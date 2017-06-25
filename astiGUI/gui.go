@@ -34,10 +34,9 @@ func StartGUI() {
 	}); err != nil {
 		log.Fatalf("Failed to create new window. Error: %v", err.Error())
 	}
-	if err := w.Create(); err != nil {
+	if err = w.Create(); err != nil {
 		log.Fatalf("Failed at window.Create(). Error: %v", err.Error())
 	}
 
-	// Blocking pattern
 	a.Wait()
 }

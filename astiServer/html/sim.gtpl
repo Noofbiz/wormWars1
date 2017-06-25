@@ -2,15 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" />
     <style>
-    html, body {
-      margin: 0 auto;
-      padding: 0 auto;
-      font-family: "Times New Roman", arial, Verdana;
-      color: #817a53;
-      background: #d8d6cb;
-    }
-
     /*
       make each pie piece a rectangle twice as high as it is wide.
       move the transform origin to the middle of the left side.
@@ -170,7 +163,17 @@
     </style>
   </head>
   <body>
-    simulation
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+          <p class="text-center"> Results </p>
+          <div class="pie" data-start="0" data-value="30"></div>
+          <div class="pie highlight" data-start="30" data-value="30"></div>
+          <div class="pie" data-start="60" data-value="40"></div>
+          <div class="pie big" data-start="100" data-value="260"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 {{end}}

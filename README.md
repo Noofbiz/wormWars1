@@ -12,3 +12,6 @@ https://github.com/gonum/plot
 
 pie chart plotter from
 https://github.com/benoitmasson/plotters/tree/master/piechart
+
+To compile you'll need to add an empty folder at
+astiServer/static/pieCharts/

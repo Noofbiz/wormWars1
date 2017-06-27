@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/benoitmasson/plotters/piechart"
 	"github.com/gonum/plot"
 	"github.com/gonum/plot/plotter"
 	"github.com/gonum/plot/vg"
+	"github.com/noofbiz/plotters/piechart"
 )
 
 // Results holds the data obtained from the simulation
@@ -40,7 +40,7 @@ func Simulate(pop, initI, until int, S2I, I2R, S2R float64) int {
 			break
 		}
 	}
-	return t + 1
+	return t
 }
 
 func simStep(res *Results, S2I, I2R, S2R float64) {
@@ -88,6 +88,7 @@ func generatePieChart(r Results, pop, i int) {
 	}
 	susPie.Color = color.RGBA{255, 0, 0, 255}
 	susPie.Total = float64(pop)
+	susPie.Labels.Show = false
 	p.Add(susPie)
 	p.Legend.Add("Susceptible", susPie)
 
@@ -98,6 +99,7 @@ func generatePieChart(r Results, pop, i int) {
 	infPie.Color = color.RGBA{0, 255, 0, 255}
 	infPie.Total = float64(pop)
 	infPie.Offset.Value = float64(r.Susceptible)
+	infPie.Labels.Show = false
 	p.Add(infPie)
 	p.Legend.Add("Infected", infPie)
 
@@ -108,6 +110,7 @@ func generatePieChart(r Results, pop, i int) {
 	resPie.Color = color.RGBA{0, 0, 255, 255}
 	resPie.Total = float64(pop)
 	resPie.Offset.Value = float64(r.Susceptible + r.Infected)
+	resPie.Labels.Show = false
 	p.Add(resPie)
 	p.Legend.Add("Resistant", resPie)
 

@@ -29,7 +29,7 @@ func StartGUI() {
 	var w *astilectron.Window
 	if w, err = a.NewWindow("http://localhost:4000", &astilectron.WindowOptions{
 		Center: astilectron.PtrBool(true),
-		Height: astilectron.PtrInt(500),
+		Height: astilectron.PtrInt(600),
 		Width:  astilectron.PtrInt(800),
 	}); err != nil {
 		log.Fatalf("Failed to create new window. Error: %v", err.Error())

@@ -57,7 +57,8 @@ func simHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	d := simulation.Simulate(pop, initI, s2i, i2r, s2r)
+	d := make(map[string]int)
+	d["Max"] = simulation.Simulate(pop, initI, -1, s2i, i2r, s2r)
 
 	err = tmpl.ExecuteTemplate(w, "sim", d)
 	if err != nil {

@@ -7,11 +7,22 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-          Simulation!
+        <div class="col-sm-10 col-sm-offset-1">
+          <h1 class="text-center"> Simulation Results! </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <img id="pie" src="static/pieCharts/pieChart0.png" class="img-responsive center-block">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <input id="slide" type="range" value="0" min="0" max="{{.Max}}" step="1" />
         </div>
       </div>
     </div>
+    <script src="static/js/changeChart.js"></script>
   </body>
 </html>
 {{end}}

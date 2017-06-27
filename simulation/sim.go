@@ -78,7 +78,7 @@ func generatePieChart(r Results, pop, i int) {
 		log.Fatalf("Could not generate pie chart. Error: %v", err.Error())
 	}
 	p.HideAxes()
-	p.BackgroundColor = color.RGBA{0, 0, 0, 0}
+	p.BackgroundColor = color.RGBA{6, 6, 6, 255}
 	p.Legend.Top = true
 	p.Legend.Color = color.RGBA{42, 159, 214, 255}
 

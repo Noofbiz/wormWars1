@@ -16,23 +16,23 @@
           <form action="/sim" method="post">
             <div class="form-group">
             <label>Population Size:</label>
-            <input type="number" name="pop" class="form-control" value=0 required><br />
+            <input type="number" name="pop" class="form-control" value=0><br />
             </div>
             <div class="form-group">
             <label>Initial Seed:</label>
-            <input type="number" name="initI" class="form-control" value=0 required><br />
+            <input type="number" name="initI" class="form-control" value=0><br />
             </div>
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>S -> I:</label>
-                  <input type="number" name="S2I" class="form-control" required placeholder="0.1" step="0.01" min="0" max="1"/><br />
+                  <input type="number" name="S2I" class="form-control" placeholder="0.1" step="0.01" min="0" max="1"/><br />
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>I -> R:</label>
-                  <input type="number" name="I2R" class="form-control" required placeholder="0.1" step="0.01" min="0" max="1"/><br />
+                  <input type="number" name="I2R" class="form-control" placeholder="0.1" step="0.01" min="0" max="1"/><br />
                 </div>
               </div>
               <div class="col-sm-4">

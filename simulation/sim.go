@@ -111,5 +111,7 @@ func generatePieChart(r Results, pop, i int) {
 	p.Add(resPie)
 	p.Legend.Add("Resistant", resPie)
 
-	p.Save(4*vg.Inch, 4*vg.Inch, "astiServer/static/pieCharts/pieChart"+strconv.Itoa(i)+".png")
+	if err = p.Save(4*vg.Inch, 4*vg.Inch, "astiServer/static/pieCharts/pieChart"+strconv.Itoa(i)+".png"); err != nil {
+		log.Fatalf("Unable to save pie chart! Error: %v", err.Error())
+	}
 }
